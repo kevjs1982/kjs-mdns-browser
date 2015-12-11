@@ -18,6 +18,8 @@ var menu_id = "UNSET";
 
 
 chrome.mdns.onServiceList.addListener(handleHTTP, {serviceType: "_http._tcp.local"});
+chrome.mdns.onServiceList.addListener(handleChromecast, {serviceType: "_googlecast._tcp.local"});
+chrome.mdns.onServiceList.addListener(handleKodi, {serviceType: "_xbmc-jsonrpc-h._tcp.local"});
 chrome.mdns.onServiceList.addListener(handleSamba, {serviceType: "_smb._tcp.local"});
 
 
@@ -31,6 +33,26 @@ function handleHTTP(https)
 	}
 	document.getElementById('http').innerHTML = html;
 }
+function handleChromecast(chromecasts)
+{
+	var html = "";
+	for(idx in chromecasts)
+	{
+		console.log(chromecasts[idx])
+		html += '<a href="http://'+chromecasts[idx].serviceHostPort+'" target="_blank">'+chromecasts[idx].serviceName+'</a><br>';
+	}
+	document.getElementById('chromecasts').innerHTML = html;
+}
+function handleKodi(chromecasts)
+{
+	var html = "";
+	for(idx in chromecasts)
+	{
+		console.log(chromecasts[idx])
+		html += '<a href="http://'+chromecasts[idx].serviceHostPort+'" target="_blank">'+chromecasts[idx].serviceName+'</a><br>';
+	}
+	document.getElementById('kodi').innerHTML = html;
+}
 function handleSamba(sambas)
 {
 	console.log("S");
@@ -39,6 +61,7 @@ function handleSamba(sambas)
 	for(idx in sambas)
 	{
 		console.log(sambas[idx])
+		html += '<a href="http://'+sambas[idx].serviceHostPort+'" target="_blank">'+sambas[idx].serviceName+'</a><br>';
 	}
 	document.getElementById('smb').innerHTML = html;
 }
