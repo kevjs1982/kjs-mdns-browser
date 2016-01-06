@@ -29,7 +29,19 @@ function handleHTTP(https)
 	for(idx in https)
 	{
 		console.log(https[idx])
-		html += '<a href="http://'+https[idx].serviceHostPort+'" target="_blank">'+https[idx].serviceName+'</a><br>';
+		var  path = "";
+		if (typeof(https[idx].serviceData)!='undefined')
+		{
+			for(idx2 in https[idx].serviceData)
+			{
+				var bits = https[idx].serviceData[idx2].split("=");
+				if (bits[0] == 'path')
+				{
+					path = bits[1];
+				}
+			}
+		}
+		html += '<a href="http://'+https[idx].serviceHostPort+path+'" target="_blank">'+https[idx].serviceName+'</a><br>';
 	}
 	document.getElementById('http').innerHTML = html;
 }
