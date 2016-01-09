@@ -10,8 +10,8 @@
     <style>
 	html 
 	{
-		width:800px;  /* Maximum Allowed */
-		height:600px;
+		width:1000px;  /* Maximum Allowed */
+		height:800px;
 	} 
 	body 
 	{
@@ -19,7 +19,7 @@
 		font-size: 100%;
 		width:800px;
 		height:600px;
-		overflow:hidden;
+		overflow:auto;
 	}
 	#statusw
 	{
@@ -92,7 +92,34 @@
 		float:left;
 		width:250px;
 	}
-
+	.websnippet
+	{
+		border:1px solid black;
+		padding:3px;
+		margin:2px;
+	}
+	.websnippet h1
+	{
+		margin:0;
+		padding:0;
+		font-size:12pt;
+	}
+	.websnippet .url
+	{
+		color:green;
+		font-size:7pt;
+	}
+	.websnippet .desc
+	{
+	font-size:8pt;
+	font-size:8pt;
+	}
+	.websnippet h1 img
+	{
+		float:right;
+		max-width:32px;
+		max-height:16px;
+	}
     </style>
 	
     <!--
@@ -101,6 +128,8 @@
       -
       - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
      -->
+	 	<script src="jquery-1.11.3.js"></script>
+
     <script src="popup.js"></script>
   </head>
 <body>
